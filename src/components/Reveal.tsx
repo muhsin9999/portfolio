@@ -18,7 +18,12 @@ export default function Reveal({
 
   useEffect(() => {
     const element = ref.current;
-    if (!element) return;
+    if (!element || typeof window === 'undefined') return;
+
+    if (!('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -28,14 +33,20 @@ export default function Reveal({
         }
       },
       {
-        threshold: 0.1,
-        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.01,
+        rootMargin: '0px 0px 50px 0px',
       }
     );
 
     observer.observe(element);
 
+    // iOS WebKit safety fallback: guarantee visibility even if observer delays or fails
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 400);
+
     return () => {
+      clearTimeout(timer);
       if (element) {
         observer.unobserve(element);
       }
