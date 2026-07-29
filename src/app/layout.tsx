@@ -17,12 +17,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mustapahmuhsin.vercel.app"),
   title: "Mustapha Muhsin -- AI & Backend Engineer",
   description:
-    "I build the backend systems behind AI products -- generation engines, billing infrastructure, and cloud architectures that ship to real users.",
+    "I build production AI backend systems, agentic loop architectures, and cloud infrastructure.",
   keywords: [
     "AI Engineer",
     "Backend Engineer",
+    "Agentic Loops",
     "TypeScript",
     "Python",
     "AWS",
@@ -32,8 +34,26 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Mustapha Muhsin -- AI & Backend Engineer",
     description:
-      "I build the backend systems behind AI products -- generation engines, billing infrastructure, and cloud architectures.",
+      "I build production AI backend systems, agentic loop architectures, and cloud infrastructure.",
+    url: "https://mustapahmuhsin.vercel.app/",
+    siteName: "Mustapha Muhsin Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Mustapha Muhsin -- AI & Backend Engineer",
+      },
+    ],
+    locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mustapha Muhsin -- AI & Backend Engineer",
+    description:
+      "I build production AI backend systems, agentic loop architectures, and cloud infrastructure.",
+    images: ["/og-image.png"],
   },
 };
 
