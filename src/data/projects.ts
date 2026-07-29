@@ -1,7 +1,7 @@
 export interface Education {
   school: string;
   degree: string;
-  grade: string;
+  grade?: string;
 }
 
 export interface SiteConfig {
@@ -24,7 +24,7 @@ export interface ProjectSection {
 export interface Project {
   slug: string;
   title: string;
-  status: 'live' | 'nda' | 'prototype' | string;
+  status: 'live' | 'nda' | 'prototype' | 'architecture' | string;
   tagline: string;
   context: string;
   tech: string[];
@@ -34,7 +34,7 @@ export interface Project {
 export interface OtherProject {
   title: string;
   description: string;
-  url: string;
+  url?: string;
 }
 
 export interface SkillCategory {
@@ -49,20 +49,42 @@ export const siteConfig: SiteConfig = {
   email: 'onoruoiza15@gmail.com',
   github: 'https://github.com/muhsin9999',
   linkedin: 'https://www.linkedin.com/in/mustapha-muhsin',
-  bio: 'I build the backend systems behind AI products -- generation engines, billing infrastructure, and cloud architectures that ship to real users.',
+  bio: 'I build production AI backend systems, agentic loop architectures, and cloud infrastructure -- from multi-agent orchestrations to serverless enterprise platforms and generation engines.',
   longBio: [
-    'I am a backend engineer building production AI systems for international clients. At SEO Content AI I own the generation engine that powers a parallel content platform -- the billing infrastructure, session persistence, and the orchestration layer that scales to 40 simultaneous articles. Before that I designed an AWS serverless architecture for an enterprise waste operations platform serving roughly 100 users.',
-    'I trained as an electrical and electronics engineer at Federal University of Technology Minna. That background shaped how I think about systems -- from the hardware up. At NCAIR (Nigeria\'s national AI centre) I built the hardware prototype for a malaria detection startup, designing automated microscopy devices with ESP32 microcontrollers and custom PCBs.',
+    'I am an AI and backend engineer specializing in production agentic systems, cloud infrastructure, and backend architecture for international clients. At White Label Resell and SEO Content AI, I build multi-agent loop orchestrators, parallel generation engines, Stripe billing systems, and AWS cloud platforms that ship to real users.',
+    'My work spans the full engineering stack -- designing governed build loops with agent swarms and Playwright verification, engineering 40-article parallel generation pipelines streaming over SSE, and building serverless AWS infrastructure (Lambda, ECS, S3, Cognito, RDS) replacing legacy enterprise workflows.',
+    'I trained as an electrical and electronics engineer at Federal University of Technology Minna. That background shaped my systems-first engineering approach -- from microcontrollers and Altium PCB design at NCAIR to distributed cloud systems and LLM agent loops.',
     'Outside of engineering I play chess and build things just to see if I can. I am currently open to remote backend and AI engineering roles.'
   ],
   education: {
     school: 'Federal University of Technology Minna',
-    degree: 'B.Eng Electrical & Electronics Engineering',
-    grade: 'Second Class Upper'
+    degree: 'B.Eng Electrical & Electronics Engineering'
   }
 };
 
 export const projects: Project[] = [
+  {
+    slug: 'governed-agent-swarm',
+    title: 'Governed Agent Swarm',
+    status: 'architecture',
+    tagline: 'Governed multi-agent build loop combining Pi harness orchestration, parallel DeepSeek codebase analysis, and Steel Playwright E2E proofing.',
+    context: 'system architecture // ai agent worker // 2026',
+    tech: ['TypeScript', 'Node.js', 'OpenRouter', 'DeepSeek R1/Flash', 'Steel.dev', 'Playwright', 'Supabase', 'Railway'],
+    sections: [
+      {
+        heading: 'the product',
+        content: 'An autonomous agentic build system designed to scan, analyze, and execute feature plans against codebases with guaranteed safety rails. The system uses a multi-agent harness to prevent hallucinated code or breaking changes from entering production branches.'
+      },
+      {
+        heading: 'what i built',
+        content: 'I architected a 5-phase governed build loop: a read-only Pi agent swarm that fans out across the codebase to collect evidence packets, a reconciliation engine that clusters findings and scores confidence, a write-enabled implementer session that generates code against isolated branches, and an automated Steel.dev cloud Playwright judge session that runs visual and E2E verification before automated GitHub PR creation.'
+      },
+      {
+        heading: 'impact',
+        content: 'The architecture enforces strict operational rules -- confidence scores under 0.70 automatically halt execution, and code is never merged without passing automated Playwright browser proof. Structured event logging traces every agent decision to Supabase for complete observability.'
+      }
+    ]
+  },
   {
     slug: 'seo-content-ai',
     title: 'SEO Content AI',
@@ -91,7 +113,7 @@ export const projects: Project[] = [
     status: 'nda',
     tagline: 'AWS serverless architecture replacing manual Excel workflows for a US environmental-services company.',
     context: 'us enterprise // cloud architect // ongoing',
-    tech: ['AWS Lambda', 'S3', 'Cognito', 'RDS', 'Technical Writing', 'Cost Analysis'],
+    tech: ['AWS Lambda', 'S3', 'Cognito', 'RDS', 'DynamoDB', 'Technical Writing', 'Cost Analysis'],
     sections: [
       {
         heading: 'the product',
@@ -113,7 +135,7 @@ export const projects: Project[] = [
     status: 'prototype',
     tagline: 'ML-based malaria detection -- I built the hardware prototype bridging the CNN model to clinical use.',
     context: 'ncair / nitda // ai & embedded systems // 2022',
-    tech: ['ESP32', 'TensorFlow', 'Altium PCB Design', '3D Printing', 'Python', 'CNN'],
+    tech: ['C++', 'ESP32', 'TensorFlow', 'Altium PCB Design', '3D Printing', 'Python', 'CNN'],
     sections: [
       {
         heading: 'the product',
@@ -141,24 +163,28 @@ export const otherProjects: OtherProject[] = [
     title: 'AttendanceAPI',
     description: 'Facial recognition attendance system with FastAPI and OpenCV.',
     url: 'https://github.com/muhsin9999/AttendanceAPI'
+  },
+  {
+    title: 'hooktrace',
+    description: 'Webhook capture, inspection, and replay debugging tool.'
   }
 ];
 
 export const skills: SkillCategory[] = [
   {
     category: 'core',
-    skills: ['TypeScript', 'Python', 'Node.js', 'FastAPI']
+    skills: ['TypeScript', 'Python', 'Node.js', 'FastAPI', 'C++']
   },
   {
     category: 'backend & data',
-    skills: ['PostgreSQL', 'Drizzle ORM', 'REST APIs', 'Server-Sent Events']
+    skills: ['PostgreSQL', 'MySQL', 'DynamoDB', 'Redis', 'Drizzle ORM', 'SQLAlchemy', 'RESTful APIs', 'WebSockets', 'Celery']
   },
   {
     category: 'cloud & ai',
-    skills: ['AWS Lambda', 'ECS / Fargate', 'RAG Pipelines', 'LangChain']
+    skills: ['AWS (Lambda, ECS, Fargate, EC2, S3, Cognito, Bedrock)', 'Agentic Loops & Harness Engineering', 'Multi-Agent Swarm Orchestration', 'RAG Pipelines (Pinecone / Vector DBs)', 'LangChain', 'LangGraph', 'Tool Calling']
   },
   {
     category: 'tools',
-    skills: ['Docker', 'Git', 'Linux', 'Cursor']
+    skills: ['Docker', 'Git', 'Cursor', 'Claude Code', 'GitHub Actions', 'Railway', 'AWS CLI']
   }
 ];
