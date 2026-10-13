@@ -51,7 +51,7 @@ export const siteConfig: SiteConfig = {
   linkedin: 'https://www.linkedin.com/in/mustapha-muhsin',
   bio: 'I build complete web products across frontend, backend, and cloud infrastructure. My work ranges from client-facing workflow tools and billing systems to AI-powered applications.',
   longBio: [
-    'I am a full-stack engineer who works from interface design through application logic, data, and deployment. At White Label Resell, I have built a private client request system with a client portal and internal workbench, as well as billing and AI-powered content workflows.',
+    'I am a full-stack engineer who works from interface design through application logic, data, and deployment. At White Label Resell, I built an enterprise-client ticketing system and designed an AWS operations-platform proof of concept for the same client, alongside billing and AI-powered content workflows.',
     'My work includes React and Next.js interfaces, TypeScript and Python services, PostgreSQL-backed applications, Stripe billing, and AWS architecture. I enjoy turning complex operations into clear, dependable tools that people can use every day.',
     'I trained as an electrical and electronics engineer at Federal University of Technology Minna. That background shaped my systems-first engineering approach -- from microcontrollers and Altium PCB design at NCAIR to distributed cloud systems and LLM agent loops.',
     'Outside of engineering I play chess and build things just to see if I can. I am currently open to remote full-stack, backend, and AI engineering roles.'
@@ -65,15 +65,15 @@ export const siteConfig: SiteConfig = {
 export const projects: Project[] = [
   {
     slug: 'client-request-workspace',
-    title: 'Client Request Workspace',
-    status: 'private client work',
-    tagline: 'A full-stack ticketing application connecting a client request portal with an internal delivery workspace.',
-    context: 'client project // full-stack engineering // 2026',
+    title: 'Enterprise Client Ticketing System',
+    status: 'nda',
+    tagline: 'A full-stack ticketing system built for the same enterprise client as my operations-platform architecture work.',
+    context: 'enterprise client engagement // full-stack engineering // 2026',
     tech: ['Next.js', 'React', 'TypeScript', 'PostgreSQL', 'Prisma', 'Auth.js', 'Tailwind CSS', 'Playwright'],
     sections: [
       {
         heading: 'the problem',
-        content: 'A client needed a clearer way to submit changes, follow their progress, and discuss them with the team delivering the work. The internal team needed one place to triage requests, assign work, track status, and keep the conversation attached to each ticket.'
+        content: 'During an enterprise operations-platform engagement, the client needed a clearer way to submit requested changes, follow progress, and discuss them with the delivery team. I built a separate ticketing system for that same client. The internal team needed one place to triage requests, assign work, track status, and keep the conversation attached to each ticket.'
       },
       {
         heading: 'what i built',
@@ -85,7 +85,7 @@ export const projects: Project[] = [
       },
       {
         heading: 'project access',
-        content: 'This was built for private client work, so the source code, client data, and live workspace are not public. I can discuss the architecture, implementation decisions, and my contribution in an interview.'
+        content: 'This system was built under a client NDA. The source code, client data, and live workspace are not public. I can discuss the architecture, implementation decisions, and my contribution in an interview.'
       }
     ]
   },
