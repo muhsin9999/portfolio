@@ -18,10 +18,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mustapahmuhsin.vercel.app"),
-  title: "Mustapha Muhsin -- AI & Backend Engineer",
+  title: "Mustapha Muhsin -- Full Stack & AI Engineer",
   description:
-    "I build production AI backend systems, agentic loop architectures, and cloud infrastructure.",
+    "Full-stack engineer building web applications, backend systems, cloud infrastructure, and AI-powered products.",
   keywords: [
+    "Full Stack Engineer",
+    "React",
+    "Next.js",
     "AI Engineer",
     "Backend Engineer",
     "Agentic Loops",
@@ -32,28 +35,19 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Mustapha Muhsin" }],
   openGraph: {
-    title: "Mustapha Muhsin -- AI & Backend Engineer",
+    title: "Mustapha Muhsin -- Full Stack & AI Engineer",
     description:
-      "I build production AI backend systems, agentic loop architectures, and cloud infrastructure.",
+      "I build complete web products across frontend, backend, and cloud infrastructure.",
     url: "https://mustapahmuhsin.vercel.app/",
     siteName: "Mustapha Muhsin Portfolio",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Mustapha Muhsin -- AI & Backend Engineer",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Mustapha Muhsin -- AI & Backend Engineer",
+    card: "summary",
+    title: "Mustapha Muhsin -- Full Stack & AI Engineer",
     description:
-      "I build production AI backend systems, agentic loop architectures, and cloud infrastructure.",
-    images: ["/og-image.png"],
+      "I build complete web products across frontend, backend, and cloud infrastructure.",
   },
 };
 

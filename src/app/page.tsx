@@ -29,7 +29,7 @@ export default function Home() {
 
         <Reveal delay={120}>
           <p className="mt-3 text-[15px] sm:text-base font-mono text-[var(--muted)] tracking-wide">
-            {siteConfig.title.toLowerCase()} // {siteConfig.location.toLowerCase()}
+            {siteConfig.title.toLowerCase()} {"//"} {siteConfig.location.toLowerCase()}
           </p>
         </Reveal>
 

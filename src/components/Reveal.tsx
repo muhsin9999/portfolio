@@ -21,8 +21,8 @@ export default function Reveal({
     if (!element || typeof window === 'undefined') return;
 
     if (!('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
+      const fallbackTimer = setTimeout(() => setIsVisible(true), 0);
+      return () => clearTimeout(fallbackTimer);
     }
 
     const observer = new IntersectionObserver(

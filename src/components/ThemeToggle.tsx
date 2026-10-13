@@ -7,23 +7,26 @@ export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme === 'light' || storedTheme === 'dark') {
-      setTheme(storedTheme);
-      if (storedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
+    const timer = window.setTimeout(() => {
+      setMounted(true);
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'light' || storedTheme === 'dark') {
+        setTheme(storedTheme);
+        if (storedTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
       } else {
-        document.documentElement.classList.remove('dark');
+        const isDark = document.documentElement.classList.contains('dark') ||
+          window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setTheme(isDark ? 'dark' : 'light');
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        }
       }
-    } else {
-      const isDark = document.documentElement.classList.contains('dark') ||
-        window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setTheme(isDark ? 'dark' : 'light');
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-      }
-    }
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, []);
 
   const toggleTheme = () => {

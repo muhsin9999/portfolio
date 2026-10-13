@@ -44,17 +44,17 @@ export interface SkillCategory {
 
 export const siteConfig: SiteConfig = {
   name: 'Mustapha Muhsin',
-  title: 'AI & Backend Engineer',
+  title: 'Full Stack & AI Engineer',
   location: 'Abuja, Nigeria',
   email: 'onoruoiza15@gmail.com',
   github: 'https://github.com/muhsin9999',
   linkedin: 'https://www.linkedin.com/in/mustapha-muhsin',
-  bio: 'I build production AI backend systems, agentic loop architectures, and cloud infrastructure -- from multi-agent orchestrations to serverless enterprise platforms and generation engines.',
+  bio: 'I build complete web products across frontend, backend, and cloud infrastructure. My work ranges from client-facing workflow tools and billing systems to AI-powered applications.',
   longBio: [
-    'I am an AI and backend engineer specializing in production agentic systems, cloud infrastructure, and backend architecture for international clients. At White Label Resell and SEO Content AI, I build multi-agent loop orchestrators, parallel generation engines, Stripe billing systems, and AWS cloud platforms that ship to real users.',
-    'My work spans the full engineering stack -- designing governed build loops with agent swarms and Playwright verification, engineering 40-article parallel generation pipelines streaming over SSE, and building serverless AWS infrastructure (Lambda, ECS, S3, Cognito, RDS) replacing legacy enterprise workflows.',
+    'I am a full-stack engineer who works from interface design through application logic, data, and deployment. At White Label Resell, I have built a private client request system with a client portal and internal workbench, as well as billing and AI-powered content workflows.',
+    'My work includes React and Next.js interfaces, TypeScript and Python services, PostgreSQL-backed applications, Stripe billing, and AWS architecture. I enjoy turning complex operations into clear, dependable tools that people can use every day.',
     'I trained as an electrical and electronics engineer at Federal University of Technology Minna. That background shaped my systems-first engineering approach -- from microcontrollers and Altium PCB design at NCAIR to distributed cloud systems and LLM agent loops.',
-    'Outside of engineering I play chess and build things just to see if I can. I am currently open to remote backend and AI engineering roles.'
+    'Outside of engineering I play chess and build things just to see if I can. I am currently open to remote full-stack, backend, and AI engineering roles.'
   ],
   education: {
     school: 'Federal University of Technology Minna',
@@ -63,6 +63,32 @@ export const siteConfig: SiteConfig = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: 'client-request-workspace',
+    title: 'Client Request Workspace',
+    status: 'private client work',
+    tagline: 'A full-stack ticketing application connecting a client request portal with an internal delivery workspace.',
+    context: 'client project // full-stack engineering // 2026',
+    tech: ['Next.js', 'React', 'TypeScript', 'PostgreSQL', 'Prisma', 'Auth.js', 'Tailwind CSS', 'Playwright'],
+    sections: [
+      {
+        heading: 'the problem',
+        content: 'A client needed a clearer way to submit changes, follow their progress, and discuss them with the team delivering the work. The internal team needed one place to triage requests, assign work, track status, and keep the conversation attached to each ticket.'
+      },
+      {
+        heading: 'what i built',
+        content: 'I built the client-facing portal and internal workspace as one Next.js application. The portal supports request intake, ticket history, comments, and attachments. The team workspace includes a Kanban board, ticket detail views, assignments, activity history, time tracking, and sprint planning. I built reusable interface components for forms, dialogs, tables, and ticket workflows.'
+      },
+      {
+        heading: 'how it works',
+        content: 'The application uses server-side actions backed by PostgreSQL and Prisma. Auth.js handles sign-in and role-aware navigation, while domain logic manages ticket transitions and SLA calculations. The repository includes unit tests for workflow rules and Playwright tests for key user flows.'
+      },
+      {
+        heading: 'project access',
+        content: 'This was built for private client work, so the source code, client data, and live workspace are not public. I can discuss the architecture, implementation decisions, and my contribution in an interview.'
+      }
+    ]
+  },
   {
     slug: 'governed-agent-swarm',
     title: 'Governed Agent Swarm',
@@ -173,7 +199,11 @@ export const otherProjects: OtherProject[] = [
 export const skills: SkillCategory[] = [
   {
     category: 'core',
-    skills: ['TypeScript', 'Python', 'Node.js', 'FastAPI', 'C++']
+    skills: ['TypeScript', 'JavaScript', 'Python', 'Node.js', 'C++']
+  },
+  {
+    category: 'frontend',
+    skills: ['React', 'Next.js', 'Tailwind CSS', 'Responsive UI', 'React Hook Form', 'Zod']
   },
   {
     category: 'backend & data',
