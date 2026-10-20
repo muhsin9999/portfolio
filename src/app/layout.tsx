@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "Next.js",
     "AI Engineer",
     "Backend Engineer",
-    "Agentic Loops",
+    "RAG Applications",
     "TypeScript",
     "Python",
     "AWS",

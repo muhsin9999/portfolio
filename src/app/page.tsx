@@ -96,7 +96,7 @@ export default function Home() {
                     {project.title}
                   </h3>
                   <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-[var(--faint)]">
-                    {project.status === "nda" ? "under nda" : project.status}
+                    {project.status}
                   </span>
                 </div>
                 <p className="mt-2 text-[14px] sm:text-[15px] leading-[1.6] text-[var(--muted)] max-w-lg">

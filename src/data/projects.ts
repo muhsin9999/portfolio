@@ -24,10 +24,11 @@ export interface ProjectSection {
 export interface Project {
   slug: string;
   title: string;
-  status: 'live' | 'nda' | 'prototype' | 'architecture' | string;
+  status: string;
   tagline: string;
   context: string;
   tech: string[];
+  sourceUrl?: string;
   sections: ProjectSection[];
 }
 
@@ -49,11 +50,11 @@ export const siteConfig: SiteConfig = {
   email: 'onoruoiza15@gmail.com',
   github: 'https://github.com/muhsin9999',
   linkedin: 'https://www.linkedin.com/in/mustapha-muhsin',
-  bio: 'I build complete web products across frontend, backend, and cloud infrastructure. My work ranges from client-facing workflow tools and billing systems to AI-powered applications.',
+  bio: 'I build web applications across frontend, backend, and cloud infrastructure, with a particular interest in AI-powered products and dependable developer experiences.',
   longBio: [
-    'I am a full-stack engineer who works from interface design through application logic, data, and deployment. At White Label Resell, I built an enterprise-client ticketing system and designed an AWS operations-platform proof of concept for the same client, alongside billing and AI-powered content workflows.',
-    'My work includes React and Next.js interfaces, TypeScript and Python services, PostgreSQL-backed applications, Stripe billing, and AWS architecture. I enjoy turning complex operations into clear, dependable tools that people can use every day.',
-    'I trained as an electrical and electronics engineer at Federal University of Technology Minna. That background shaped my systems-first engineering approach -- from microcontrollers and Altium PCB design at NCAIR to distributed cloud systems and LLM agent loops.',
+    'I am a full-stack engineer who enjoys taking a product from interface and API design through data modelling, integration, and deployment. I work across TypeScript and Python and care about software that is useful, clear, and reliable.',
+    'My experience spans React and Next.js interfaces, database-backed services, cloud infrastructure, and AI applications. I also build independent projects to explore backend architecture and practical uses of machine learning.',
+    'I trained as an electrical and electronics engineer at Federal University of Technology Minna. That background shaped my systems approach, from microcontrollers and PCB prototyping at NCAIR to web and cloud software.',
     'Outside of engineering I play chess and build things just to see if I can. I am currently open to remote full-stack, backend, and AI engineering roles.'
   ],
   education: {
@@ -64,94 +65,48 @@ export const siteConfig: SiteConfig = {
 
 export const projects: Project[] = [
   {
-    slug: 'client-request-workspace',
-    title: 'Enterprise Client Ticketing System',
-    status: 'nda',
-    tagline: 'A full-stack ticketing system built for the same enterprise client as my operations-platform architecture work.',
-    context: 'enterprise client engagement // full-stack engineering // 2026',
-    tech: ['Next.js', 'React', 'TypeScript', 'PostgreSQL', 'Prisma', 'Auth.js', 'Tailwind CSS', 'Playwright'],
+    slug: 'rag-chatbot-api',
+    title: 'RAG Chatbot API',
+    status: 'open source',
+    tagline: 'A document question-answering API with background ingestion and source-grounded responses.',
+    context: 'independent project // backend & AI',
+    tech: ['Python', 'FastAPI', 'PostgreSQL', 'Celery', 'Redis', 'Pinecone', 'AWS S3', 'Docker'],
+    sourceUrl: 'https://github.com/muhsin9999/rag-chatbot-api',
     sections: [
       {
-        heading: 'the problem',
-        content: 'During an enterprise operations-platform engagement, the client needed a clearer way to submit requested changes, follow progress, and discuss them with the delivery team. I built a separate ticketing system for that same client. The internal team needed one place to triage requests, assign work, track status, and keep the conversation attached to each ticket.'
+        heading: 'the idea',
+        content: 'I built an API that accepts documents and answers questions using retrieved passages from those documents. The responses include source references so a user can trace an answer back to its material.'
       },
       {
         heading: 'what i built',
-        content: 'I built the client-facing portal and internal workspace as one Next.js application. The portal supports request intake, ticket history, comments, and attachments. The team workspace includes a Kanban board, ticket detail views, assignments, activity history, time tracking, and sprint planning. I built reusable interface components for forms, dialogs, tables, and ticket workflows.'
+        content: 'The FastAPI service handles uploads, document listing, chat, and conversation history. Uploaded files are stored in S3; PostgreSQL holds document and conversation data. A Celery worker processes ingestion in the background, with Redis as the task broker.'
       },
       {
         heading: 'how it works',
-        content: 'The application uses server-side actions backed by PostgreSQL and Prisma. Auth.js handles sign-in and role-aware navigation, while domain logic manages ticket transitions and SLA calculations. The repository includes unit tests for workflow rules and Playwright tests for key user flows.'
-      },
-      {
-        heading: 'project access',
-        content: 'This system was built under a client NDA. The source code, client data, and live workspace are not public. I can discuss the architecture, implementation decisions, and my contribution in an interview.'
+        content: 'Documents are split into chunks, embedded, and indexed in Pinecone. At question time, the API retrieves relevant chunks and uses them to generate a grounded answer. The repository includes Docker setup, database migrations, and automated checks.'
       }
     ]
   },
   {
-    slug: 'governed-agent-swarm',
-    title: 'Governed Agent Swarm',
-    status: 'architecture',
-    tagline: 'Governed multi-agent build loop combining Pi harness orchestration, parallel DeepSeek codebase analysis, and Steel Playwright E2E proofing.',
-    context: 'system architecture // ai agent worker // 2026',
-    tech: ['TypeScript', 'Node.js', 'OpenRouter', 'DeepSeek R1/Flash', 'Steel.dev', 'Playwright', 'Supabase', 'Railway'],
+    slug: 'attendance-api',
+    title: 'Facial Recognition Attendance API',
+    status: 'open source',
+    tagline: 'An API for employee enrolment, face-based check-in, and attendance history.',
+    context: 'independent project // APIs & computer vision',
+    tech: ['Python', 'FastAPI', 'OpenCV', 'dlib', 'PostgreSQL', 'SQLAlchemy', 'JWT'],
+    sourceUrl: 'https://github.com/muhsin9999/AttendanceAPI',
     sections: [
       {
-        heading: 'the product',
-        content: 'An autonomous agentic build system designed to scan, analyze, and execute feature plans against codebases with guaranteed safety rails. The system uses a multi-agent harness to prevent hallucinated code or breaking changes from entering production branches.'
+        heading: 'the idea',
+        content: 'I built a small attendance system that registers an employee from a photo and records check-ins by comparing a new image with stored face encodings.'
       },
       {
         heading: 'what i built',
-        content: 'I architected a 5-phase governed build loop: a read-only Pi agent swarm that fans out across the codebase to collect evidence packets, a reconciliation engine that clusters findings and scores confidence, a write-enabled implementer session that generates code against isolated branches, and an automated Steel.dev cloud Playwright judge session that runs visual and E2E verification before automated GitHub PR creation.'
+        content: 'The FastAPI endpoints cover employee registration, check-in, employee listing, and attendance history. OpenCV handles image input, dlib creates face encodings, and PostgreSQL stores employee and attendance records.'
       },
       {
-        heading: 'impact',
-        content: 'The architecture enforces strict operational rules -- confidence scores under 0.70 automatically halt execution, and code is never merged without passing automated Playwright browser proof. Structured event logging traces every agent decision to Supabase for complete observability.'
-      }
-    ]
-  },
-  {
-    slug: 'seo-content-ai',
-    title: 'SEO Content AI',
-    status: 'live',
-    tagline: 'Parallel AI content generation platform -- I own the backend generation engine, billing infrastructure, and session persistence.',
-    context: 'us agency // ai backend engineer // jan 2025 -- present',
-    tech: ['TypeScript', 'Next.js', 'PostgreSQL', 'Drizzle ORM', 'Stripe', 'SSE', 'Flux Dev'],
-    sections: [
-      {
-        heading: 'the product',
-        content: 'SEO Content AI is a platform that generates optimised articles at scale for agencies and content teams. Users configure article parameters -- keywords, tone, structure -- and the platform generates complete articles with AI, including images. The platform supports 9 content formats and is integrating into an AI Site Builder product.'
-      },
-      {
-        heading: 'what i built',
-        content: 'I rebuilt the core generation engine as a parallel orchestrator. The original system was serial -- one article at a time, blocking the user until each finished. I restructured it into a fair concurrency system that runs up to 40 articles simultaneously, with Server-Sent Events streaming real-time progress to the frontend. I also built the Stripe billing infrastructure from scratch: atomic subscription transactions, monthly plan allocations, and feature gating across bulk generation, WordPress exports, and whitelabel domain logic.'
-      },
-      {
-        heading: 'impact',
-        content: 'Bulk generation time dropped by roughly 90%. The billing system handles all plan management and gating with zero manual intervention. I also built a hybrid session persistence system combining sessionStorage with database checkpoints -- if a user closes their browser mid-generation, the task resumes automatically when they return.'
-      }
-    ]
-  },
-  {
-    slug: 'enterprise-waste-ops',
-    title: 'Enterprise Waste-Ops',
-    status: 'nda',
-    tagline: 'AWS serverless architecture replacing manual Excel workflows for a US environmental-services company.',
-    context: 'us enterprise // cloud architect // ongoing',
-    tech: ['AWS Lambda', 'S3', 'Cognito', 'RDS', 'DynamoDB', 'Technical Writing', 'Cost Analysis'],
-    sections: [
-      {
-        heading: 'the product',
-        content: 'A data management platform for a US environmental services company that had run its entire operation on Excel spreadsheets for five years. The platform needed to handle waste tracking, compliance reporting, and operational workflows for roughly 100 users.'
-      },
-      {
-        heading: 'what i built',
-        content: 'I designed the complete AWS serverless architecture -- Lambda functions for business logic, S3 for document storage, Cognito for authentication, and RDS for structured data. I produced all client-facing technical deliverables: interactive architecture maps, Technical Briefs, and AWS/Azure cost calculators that were reviewed directly by the client IT Director and ESG team.'
-      },
-      {
-        heading: 'impact',
-        content: 'The architecture replaced a fragile, manual process with a scalable cloud system. The deliverables I produced were the primary materials used in executive review and vendor selection.'
+        heading: 'access and verification',
+        content: 'JWT authentication protects the API, with admin access required for employee registration. A check-in returns a matched employee and timestamp or an unauthorised response when no match is found.'
       }
     ]
   },
@@ -181,18 +136,8 @@ export const projects: Project[] = [
 
 export const otherProjects: OtherProject[] = [
   {
-    title: 'rag-chatbot-api',
-    description: 'Production RAG pipeline with Pinecone, FastAPI, Celery, Redis, S3.',
-    url: 'https://github.com/muhsin9999/rag-chatbot-api'
-  },
-  {
-    title: 'AttendanceAPI',
-    description: 'Facial recognition attendance system with FastAPI and OpenCV.',
-    url: 'https://github.com/muhsin9999/AttendanceAPI'
-  },
-  {
-    title: 'hooktrace',
-    description: 'Webhook capture, inspection, and replay debugging tool.'
+    title: 'IoT Solar Tracking System',
+    description: 'Final-year project using ESP8266 and ThingSpeak for panel tracking and remote monitoring.'
   }
 ];
 
@@ -211,7 +156,7 @@ export const skills: SkillCategory[] = [
   },
   {
     category: 'cloud & ai',
-    skills: ['AWS (Lambda, ECS, Fargate, EC2, S3, Cognito, Bedrock)', 'Agentic Loops & Harness Engineering', 'Multi-Agent Swarm Orchestration', 'RAG Pipelines (Pinecone / Vector DBs)', 'LangChain', 'LangGraph', 'Tool Calling']
+    skills: ['AWS (Lambda, ECS, Fargate, EC2, S3, Cognito, Bedrock)', 'RAG Pipelines', 'LLM Integrations', 'LangChain', 'LangGraph', 'Tool Calling']
   },
   {
     category: 'tools',

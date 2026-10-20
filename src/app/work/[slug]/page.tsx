@@ -6,6 +6,8 @@ import { projects } from "@/data/projects";
 
 type Params = Promise<{ slug: string }>;
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
@@ -27,9 +29,6 @@ export default async function WorkDetailPage({ params }: { params: Params }) {
   if (!project) {
     notFound();
   }
-
-  const statusLabel =
-    project.status === "nda" ? "under nda" : project.status;
 
   return (
     <div className="max-w-2xl mx-auto px-6">
@@ -54,7 +53,7 @@ export default async function WorkDetailPage({ params }: { params: Params }) {
         {/* Meta row */}
         <Reveal delay={120}>
           <div className="mt-4 flex flex-wrap items-center gap-4 text-[12px] font-mono text-[var(--faint)]">
-            <span className="uppercase tracking-[0.06em]">{statusLabel}</span>
+            <span className="uppercase tracking-[0.06em]">{project.status}</span>
             <span className="text-[var(--border)]">/</span>
             <span>{project.context}</span>
           </div>
@@ -73,6 +72,19 @@ export default async function WorkDetailPage({ params }: { params: Params }) {
             ))}
           </div>
         </Reveal>
+
+        {project.sourceUrl && (
+          <Reveal delay={210}>
+            <a
+              href={project.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-block link-underline font-mono text-[13px] text-[var(--muted)]"
+            >
+              view source on GitHub &#8599;
+            </a>
+          </Reveal>
+        )}
 
         {/* Narrative sections */}
         <div className="mt-16 space-y-14">
