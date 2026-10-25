@@ -4,10 +4,15 @@ import {
   siteConfig,
   projects,
   otherProjects,
+  openSourceContribution,
   skills,
 } from "@/data/projects";
 
 export default function Home() {
+  const professionalProjects = projects.filter((project) => project.workType === 'professional');
+  const featuredProjects = projects.filter((project) => project.workType === 'independent');
+  const earlierProjects = projects.filter((project) => project.featured === false);
+
   return (
     <div className="max-w-2xl mx-auto px-6">
       {/* ==========================================
@@ -75,16 +80,60 @@ export default function Home() {
       </section>
 
       {/* ==========================================
-          SELECTED WORK
+          PROFESSIONAL WORK
           ========================================== */}
       <section id="work" className="pb-20 sm:pb-24">
         <Reveal>
           <p className="text-[11px] font-mono font-medium uppercase tracking-[0.14em] text-[var(--faint)] mb-2">
-            selected work
+            professional work
+          </p>
+          <p className="text-[14px] leading-[1.6] text-[var(--muted)] mb-5">
+            Selected work at White Label Resell. Client identities, source code, and internal materials are kept private.
           </p>
         </Reveal>
 
-        {projects.map((project, i) => (
+        {professionalProjects.map((project, i) => (
+          <Reveal key={project.slug} delay={(i + 1) * 60}>
+            <Link
+              href={`/work/${project.slug}`}
+              className="group flex justify-between items-start gap-4 border-t border-[var(--border)] py-7 sm:py-8 text-inherit no-underline"
+            >
+              <div>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <h3 className="text-xl sm:text-2xl font-medium tracking-[-0.02em]">
+                    {project.title}
+                  </h3>
+                  <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-[var(--faint)]">
+                    {project.status}
+                  </span>
+                </div>
+                <p className="mt-2 text-[14px] sm:text-[15px] leading-[1.6] text-[var(--muted)] max-w-lg">
+                  {project.tagline}
+                </p>
+                <p className="mt-3 text-[11px] font-mono uppercase tracking-[0.06em] text-[var(--faint)]">
+                  {project.context}
+                </p>
+              </div>
+              <span aria-hidden="true" className="mt-2 text-[var(--muted)] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[var(--accent)] shrink-0">
+                &#8599;
+              </span>
+            </Link>
+          </Reveal>
+        ))}
+        <div className="border-t border-[var(--border)]" />
+      </section>
+
+      {/* ==========================================
+          INDEPENDENT WORK
+          ========================================== */}
+      <section className="pb-20 sm:pb-24">
+        <Reveal>
+          <p className="text-[11px] font-mono font-medium uppercase tracking-[0.14em] text-[var(--faint)] mb-2">
+            independent work
+          </p>
+        </Reveal>
+
+        {featuredProjects.map((project, i) => (
           <Reveal key={project.slug} delay={(i + 1) * 60}>
             <Link
               href={`/work/${project.slug}`}
@@ -128,50 +177,65 @@ export default function Home() {
 
         <div className="border-t border-[var(--border)]" />
 
-        {/* Other projects */}
-        {otherProjects.length > 0 && (
-          <div className="mt-12">
-            <Reveal>
-              <p className="text-[11px] font-mono font-medium uppercase tracking-[0.14em] text-[var(--faint)] mb-4">
-                other projects
-              </p>
+        <div className="mt-14">
+          <Reveal>
+            <p className="text-[11px] font-mono font-medium uppercase tracking-[0.14em] text-[var(--faint)] mb-4">
+              open-source contribution
+            </p>
+          </Reveal>
+          <Reveal delay={60}>
+            <a
+              href={openSourceContribution.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block border-t border-b border-[var(--border)] py-6 text-inherit no-underline"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-xl font-medium tracking-[-0.02em] group-hover:text-[var(--accent)] transition-colors">
+                    {openSourceContribution.title}
+                  </h3>
+                  <p className="mt-2 text-[14px] leading-[1.6] text-[var(--muted)] max-w-lg">
+                    {openSourceContribution.description}
+                  </p>
+                  <p className="mt-3 text-[11px] font-mono uppercase tracking-[0.06em] text-[var(--faint)]">
+                    {openSourceContribution.label}
+                  </p>
+                </div>
+                <span aria-hidden="true" className="mt-1 text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors">&#8599;</span>
+              </div>
+            </a>
+          </Reveal>
+        </div>
+
+        <div className="mt-14">
+          <Reveal>
+            <p className="text-[11px] font-mono font-medium uppercase tracking-[0.14em] text-[var(--faint)] mb-4">
+              earlier work
+            </p>
+          </Reveal>
+          {earlierProjects.map((project, i) => (
+            <Reveal key={project.slug} delay={(i + 1) * 60}>
+              <Link
+                href={`/work/${project.slug}`}
+                className="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3 py-3 text-inherit no-underline"
+              >
+                <span className="font-mono text-[14px] text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">
+                  {project.title} <span aria-hidden="true">&#8594;</span>
+                </span>
+                <span className="text-[13px] text-[var(--muted)]">{project.tagline}</span>
+              </Link>
             </Reveal>
-            {otherProjects.map((op, i) => (
-              <Reveal key={op.title} delay={(i + 1) * 60}>
-                {op.url ? (
-                  <a
-                    href={op.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-baseline gap-3 py-3 text-inherit no-underline"
-                  >
-                    <span className="font-mono text-[14px] text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">
-                      {op.title}
-                    </span>
-                    <span className="text-[13px] text-[var(--muted)]">
-                      {op.description}
-                    </span>
-                    <span className="text-[var(--faint)] text-[12px] shrink-0 group-hover:text-[var(--accent)] transition-colors">
-                      &#8599;
-                    </span>
-                  </a>
-                ) : (
-                  <div className="flex items-baseline gap-3 py-3 text-inherit">
-                    <span className="font-mono text-[14px] text-[var(--text)]">
-                      {op.title}
-                    </span>
-                    <span className="text-[13px] text-[var(--muted)]">
-                      {op.description}
-                    </span>
-                    <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-[var(--faint)] ml-auto">
-                      private repo
-                    </span>
-                  </div>
-                )}
-              </Reveal>
-            ))}
-          </div>
-        )}
+          ))}
+          {otherProjects.map((project, i) => (
+            <Reveal key={project.title} delay={(earlierProjects.length + i + 1) * 60}>
+              <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3 py-3">
+                <span className="font-mono text-[14px] text-[var(--text)]">{project.title}</span>
+                <span className="text-[13px] text-[var(--muted)]">{project.description}</span>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       {/* ==========================================

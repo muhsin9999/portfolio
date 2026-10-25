@@ -73,16 +73,30 @@ export default async function WorkDetailPage({ params }: { params: Params }) {
           </div>
         </Reveal>
 
-        {project.sourceUrl && (
+        {(project.demoUrl || project.sourceUrl) && (
           <Reveal delay={210}>
-            <a
-              href={project.sourceUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-7 inline-block link-underline font-mono text-[13px] text-[var(--muted)]"
-            >
-              view source on GitHub &#8599;
-            </a>
+            <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 font-mono text-[13px]">
+              {project.demoUrl && (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center link-underline text-[var(--accent)]"
+                >
+                  explore live demo &#8599;
+                </a>
+              )}
+              {project.sourceUrl && (
+                <a
+                  href={project.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center link-underline text-[var(--muted)]"
+                >
+                  view source on GitHub &#8599;
+                </a>
+              )}
+            </div>
           </Reveal>
         )}
 
