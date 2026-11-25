@@ -135,10 +135,11 @@ export default function Home() {
 
         {featuredProjects.map((project, i) => (
           <Reveal key={project.slug} delay={(i + 1) * 60}>
-            <Link
-              href={`/work/${project.slug}`}
-              className="group flex justify-between items-start gap-4 border-t border-[var(--border)] py-7 sm:py-8 text-inherit no-underline"
-            >
+            <div className="border-t border-[var(--border)]">
+              <Link
+                href={`/work/${project.slug}`}
+                className="group flex justify-between items-start gap-4 py-7 sm:py-8 text-inherit no-underline"
+              >
               <div>
                 <div className="flex items-center gap-3 flex-wrap">
                   <h3 className="text-xl sm:text-2xl font-medium tracking-[-0.02em]">
@@ -171,7 +172,22 @@ export default function Home() {
                   />
                 </svg>
               </span>
-            </Link>
+              </Link>
+              {(project.demoUrl || project.sourceUrl) && (
+                <div className="-mt-3 pb-6 flex flex-wrap gap-x-6 gap-y-2 text-[13px] font-mono">
+                  {project.demoUrl && (
+                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center link-underline text-[var(--accent)]">
+                      live demo &#8599;
+                    </a>
+                  )}
+                  {project.sourceUrl && (
+                    <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center link-underline text-[var(--muted)]">
+                      source code &#8599;
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
           </Reveal>
         ))}
 

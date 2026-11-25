@@ -199,6 +199,7 @@ export const projects: Project[] = [
     context: 'full stack // AI agents & evaluation',
     tech: ['TypeScript', 'Next.js', 'PostgreSQL', 'PayPal Sandbox', 'OpenAI', 'Vitest', 'Playwright'],
     demoUrl: 'https://cleared-web.onrender.com/',
+    sourceUrl: 'https://github.com/muhsin9999/cleared',
     sections: [
       {
         heading: 'the problem',
@@ -214,7 +215,7 @@ export const projects: Project[] = [
       },
       {
         heading: 'scope',
-        content: 'The public demo uses PayPal Sandbox and fictional participants, so no real money moves. The codebase is independently owned and currently private.'
+        content: 'The public demo uses PayPal Sandbox and fictional participants, so no real money moves. The independently owned codebase is public on GitHub.'
       }
     ]
   },
@@ -227,6 +228,7 @@ export const projects: Project[] = [
     context: 'full stack // payment reliability & AI',
     tech: ['TypeScript', 'Next.js', 'PostgreSQL', 'PayPal Sandbox', 'OpenAI', 'Webhooks', 'Vitest'],
     demoUrl: 'https://lifeline-giving.vercel.app/',
+    sourceUrl: 'https://github.com/muhsin9999/lifeline',
     sections: [
       {
         heading: 'the problem',
@@ -242,7 +244,7 @@ export const projects: Project[] = [
       },
       {
         heading: 'scope',
-        content: 'The demo uses fictional donors and PayPal Sandbox. It does not move real money. The codebase is independently owned and currently private.'
+        content: 'The demo uses fictional donors and PayPal Sandbox. It does not move real money. The independently owned codebase is public on GitHub.'
       }
     ]
   },
@@ -255,6 +257,7 @@ export const projects: Project[] = [
     context: 'full stack // AI & commerce',
     tech: ['TypeScript', 'Next.js', 'PostgreSQL', 'PayPal Sandbox', 'AI agents'],
     demoUrl: 'https://spoilclock-app.vercel.app/',
+    sourceUrl: 'https://github.com/muhsin9999/spoilclock',
     sections: [
       {
         heading: 'the idea',
@@ -266,7 +269,7 @@ export const projects: Project[] = [
       },
       {
         heading: 'scope',
-        content: 'The demo uses fictional participants and sandbox payments. The repository is private while the hackathon submission is being prepared.'
+        content: 'The demo uses fictional participants and sandbox payments. The independently owned repository is public on GitHub.'
       }
     ]
   },
